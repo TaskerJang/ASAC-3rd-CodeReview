@@ -159,7 +159,8 @@
     - **BiConsumer** : **(T, U) → (  )** | 익명 함수명 accept
 - 파라미터별 함수 역할에 따라 색깔로 나누어봤었는데, 그림 참조
 
-  ![IMG_F0D86A7440EE-1.jpeg](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/5affac2b-0a84-445f-a4b1-8f1db3083c49/IMG_F0D86A7440EE-1.jpeg)
+ ![IMG_F0D86A7440EE-1](https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/56432947-631a-40c2-951a-326ef6e7f356)
+
 
 
 ## Java 추상 클래스(Abstract Class) 와 인터페이스(Interface) 차이
@@ -390,13 +391,15 @@ Spring 을 사용함에 있어서, 크게 2개 타입의 Annotation 을 접할�
         - 예) **@Controller** : 컨트롤러 정의를 위한 Annotation
         - 예) **@RequestMapping** : URL + METHOD 와 함수 연결
 
-  ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/cce47e40-a8e3-46c0-93a4-c536f4a7a4e9/Untitled.png)
+ <img width="990" alt="Untitled (2)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/7d5a6563-47ef-43e4-b19b-137d16400861">
+
 
 - **Lombok 에서 제공하는 Annotation** (예, @Setter, @Getter 등)
     - 예) **@Setter** : 해당 클래스 내 모든 필드 (혹은 특정 필드) 에 Setter 함수 생성
     - 예) **@Getter** : 해당 클래스 내 모든 필드 (혹은 특정 필드) 에 Getter 함수 생성
 
-  ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/09ca5d15-e218-418f-b9e2-4018f79d9332/Untitled.png)
+  <img width="700" alt="Untitled (3)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/a14344ba-383d-4d64-b8b6-0c730855a3ad">
+
 
 - **Lombok 원리** : 컴파일 시점에 Annnotation Processor 를 사용하여 Abstract Syntax Tree 조작
     - **Java (.java → .class) 컴파일 과정**
@@ -635,12 +638,14 @@ Enum Exception 처리 로직을 String → Enum 로직과 떨어트리는게 좋
 - Enum 내 String → Enum 변환 **정적 메서드**
     - **이전** : null 을 반환하고, `from()` 메서드 **외부에서 Exception 발생**
 
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/e907454a-1b63-432f-9a88-3622b590bb77/Untitled.png)
+      <img width="1000" alt="Untitled (4)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/7884c8f0-bc4f-4d31-8dfe-8fc3a3dfc010">
+
 
     - **이후** : **String** 에 해당하는 **Enum** 이 존재하지 않는 경우 **내부에서 Exception 발생**
         - Enum 미존재 Exception 은 String → Enum 변환 로직과 분리될 수 없다.
 
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/8a71dbd2-1470-487f-a5eb-daf4e0317276/Untitled.png)
+      <img width="1000" alt="Untitled (5)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/aac6a52f-4ea0-41a0-8f50-9e6fea63aeca">
+
 
 
 ### @RequestBody 의 Null + Validation 처리
@@ -651,12 +656,14 @@ GetProducWithCondition 메서드 내 SearchReqDto 내 필드를 가져다 쓰는
 - **유효한 날짜인지 여부를 검사**한다.
     - **이전** : 이 모든 로직들이 아래 코드에서 **약 16줄의 라인을 차지한다.**
 
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/ee7ca79d-31fb-4a1e-a211-eb03e941fd80/Untitled.png)
+     <img width="1000" alt="Untitled (6)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/27216b69-3908-4e19-a63a-bf039ac1b0c0">
+
 
     - **이후** : 이 모든 로직들은 **DTO 내 Getter 메서드 호출할때 혹은 JSON → 객체 Deserialize 때로 이관**
         - DTO 는 다음과 같다. 이를 기준으로 아래 순서에 따라 리팩토링 시도
 
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/6cfbe8fd-4800-465f-a252-9016e37f4c67/Untitled.png)
+         <img width="480" alt="Untitled (7)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/b9f580eb-a9d5-49a8-8cea-4b380a432b64">
+
 
         1. **Null 을 입력하지 않도록 막는 책임을 백엔드가 가져갈것인가, 프론트엔드가 가져갈것인가?**
             - **프론트엔드가 가져간다면**, 백엔드는 **@NotNull 로 절대 Null 이어서는 안된다는 조건을 추가**
@@ -676,16 +683,18 @@ GetProducWithCondition 메서드 내 SearchReqDto 내 필드를 가져다 쓰는
 
                       아래와 같이 @Valid 를 꼭 넣어주어야한다.
 
-                      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/3f1d628b-fddc-48e8-b5ad-0fa032d29f92/Untitled.png)
+                     <img width="480" alt="Untitled (7)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/12cc8d47-b78a-40c7-b479-2270e2f073ba">
 
                 2. **Get 메서드 호출 시 Validation 처리하여 반환**
                     - 예시 코드 : @Override 를 통해 @Getter 로 생성되는 자동 Getter 메서드를 재정의
 
-                      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/d3ceb5d6-d502-4b19-b395-253bbbae9d54/Untitled.png)
+                     <img width="1000" alt="Untitled (12)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/4cf914a0-87d5-41f6-aa56-fdf9c355161e">
+
 
         - **결과적으로는 아래와 같이 Null 및 Validation 처리 로직이 모두 사라짐**
 
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/d620d2cb-3337-4eeb-810f-82c9088299bf/Untitled.png)
+          <img width="1000" alt="Untitled (13)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/00fbc208-8cdf-46a0-8a2a-8b7b74dc7979">
+
 
 
 ### Exception 공통 처리
@@ -699,7 +708,8 @@ GetProducWithCondition 메서드 내 SearchReqDto 내 필드를 가져다 쓰는
         - **이전 :** 이를 처리하기 위해서 일반적으론 @Controller 내 try-catch 구문으로 방어하게된다.
             - 만약 @Controller 로 정의된 API 메서드가 수백개면? **똑같은 try-catch 구문을 수백개 작성**
 
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/2ed0d7bb-d855-4f65-8c9c-baf6e7fe1c20/Untitled.png)
+         <img width="1000" alt="Untitled (14)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/6ab2f602-6c09-4682-b581-517d1b6bd3eb">
+
 
         - **이후** : @ControllerAdvice 와 @ExceptionHandler 를 통해 try-catch 를 대신/중앙화
             - @ExceptionHandler 는 어떤 Exception 을 받아서 처리할지 개별 정의가 가능
@@ -718,7 +728,8 @@ GetProducWithCondition 메서드 내 SearchReqDto 내 필드를 가져다 쓰는
             - **추가 2)** @ResponseBody + @ControllerAdvice = **@RestControlerAdvice**
             - **추가 3)** @ControllerAdvice 내 파라미터를 통해 특정 패키지 내 @Controller 에만 적용가능
 
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/1c041b01-5bbe-44f9-940e-b08bf1f5aa34/Untitled.png)
+          <img width="1000" alt="Untitled (15)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/720077bf-b473-47a4-bedd-3dd2fd7b4fca">
+
 
 
 ### 프론트엔드에게 혹은 API 반환 시 일관된 객체(JSON) 형태로 반환하기
@@ -736,18 +747,21 @@ GetProducWithCondition 메서드 내 SearchReqDto 내 필드를 가져다 쓰는
         - 백엔드에서 발생한 에러에 대한 메세지를 다원화하기 어렵다.
             - 제대로 HTTP Status 반환한다해도, 유저에게 HTTP Status 기반의 에러 메세지만 발행 가능
 
-  ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/edcb1add-51bc-49b0-9812-7783f2875b69/Untitled.png)
+  <img width="1000" alt="Untitled (16)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/eb30b9d1-e398-42d6-8aff-ae1f2db389a5">
+
 
 - **이후** : @Controller 및 @ExceptionHandler 모두 동일한 **RequestResult<T>** 라는 객체를 반환
     - **백엔드** : Exception 에 따른 메세지를 다원화 가능, 성공/실패에 대한 간단한 정적 팩토리 메서드 활용
     - **프론트엔드** : (무지성으로) 백엔드가 보내준 RequestResult 를 통한 에러메세지 및 반환값 간단 처리
         - 프론트엔드는 정말 아무것도 신경쓰지 않고, 화면에 오롯이 집중할 수 있다.
 
-  ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/7ef42aec-775e-4bfd-8175-0080c1a2c5a5/Untitled.png)
+  <img width="1000" alt="Untitled (17)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/622ee8b9-c992-47d1-9a96-bf3b07cf0d59">
+
 
     - 아래는 @ControllerAdvice 내 @ExceptionHandler 에서 실패시의 RequestResult 반환
 
-  ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/a3bb0ac2-4197-4d63-ad2f-be6c3d696028/Untitled.png)
+ <img width="1000" alt="Untitled (18)" src="https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/7a412a05-ff64-41ba-8cc8-44c39082bde9">
+
 
 
 ### DTO 나 Controller 만들때 @FieldDefaults 사용하면 깔끔
@@ -781,9 +795,11 @@ GetProducWithCondition 메서드 내 SearchReqDto 내 필드를 가져다 쓰는
     - **2차 캐시 : SessionFactory-level Cache** (WAS 뜨고, 지는 시간안에 생존 = 어플리케이션 레벨)
     - 1차 및 2차 캐시의 차이점에 대해 **이해가 쉬운 그림 설명**
 
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/663e8649-8785-4e76-9817-52721360e9f6/Untitled.png)
+      ![Untitled (19)](https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/5d28416f-67e5-425d-a5f8-b8c25fb752dd)
 
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/c48b0498-1d3b-4e81-895d-379251e0cf86/0e102981-b4aa-4c4e-8fa7-99621128d0b5/Untitled.png)
+
+     ![Untitled (20)](https://github.com/TaskerJang/ASAC-3rd-CodeReview/assets/124780552/70d65457-935a-4432-a17d-23e64de5e4b0)
+
 
 - 2차 캐시 사용을 위해서는 아래 절차를 따라 설정 (Spring Cache 에 대한 설명 - **[참조 1](https://adjh54.tistory.com/165)**, **[참조 2](https://jiwondev.tistory.com/282)**, **[참조 3](https://mangkyu.tistory.com/179)**)
     1. ****@EnableCaching 설정****
